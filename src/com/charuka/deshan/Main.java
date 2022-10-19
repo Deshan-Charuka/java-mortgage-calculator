@@ -14,7 +14,7 @@ public class Main {
         final byte PERCENT = 100;
         Scanner scanner = new Scanner(System.in);
         int principal;
-        float annualInterest,monthlyInterest;
+        float monthlyInterest;
         short periodMonths;
 
 
@@ -23,18 +23,17 @@ public class Main {
             principal = scanner.nextInt();
             if(principal >= 1000 && principal <= 1_000_000)
                 break;
-            else
-                System.out.println("Please enter a value between 1,000 and 1,000,000");
+            System.out.println("Please enter a value between 1,000 and 1,000,000");
         }
 
         while(true){
             System.out.print("Annual Interest Rate: ");
-            annualInterest = scanner.nextFloat();
+            float annualInterest = scanner.nextFloat();
             if(annualInterest > 0 && annualInterest <= 30){
                 monthlyInterest = (annualInterest/PERCENT)/MONTHS_IN_YEAR;
                 break;
-            }else
-                System.out.println("Please enter a value greater than 0 and less than or equal to 30");
+            }
+            System.out.println("Please enter a value greater than 0 and less than or equal to 30");
         }
 
         while(true){
@@ -42,8 +41,7 @@ public class Main {
             periodMonths = (short) (scanner.nextByte() * MONTHS_IN_YEAR);
             if(periodMonths >= 12 && periodMonths <= 360)
                 break;
-            else
-                System.out.println("Enter a value between 1 and 30");
+            System.out.println("Enter a value between 1 and 30");
         }
 
         //Calculation
