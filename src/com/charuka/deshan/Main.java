@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        int principal = (int)readNumber("Principal($1K - $1M)",1000,1_000_000);
-        float annualInterest = (float) readNumber("Annual Interest Rate",1,30);
-        byte years = (byte)readNumber("Period (Years)",1,30);
+        int principal = (int) readNumber("Principal($1K - $1M)", 1000, 1_000_000);
+        float annualInterest = (float) readNumber("Annual Interest Rate", 1, 30);
+        byte years = (byte) readNumber("Period (Years)", 1, 30);
 
         //Calculation
         double mortgage = calculateMortgage(principal, annualInterest, years);
@@ -22,15 +22,14 @@ public class Main {
 
     }
 
-    public static double readNumber(String prompt,double min,double max){
+    public static double readNumber(String prompt, double min, double max) {
         Scanner scanner = new Scanner(System.in);
         double value;
         while (true) {
-            System.out.print(prompt+": ");
+            System.out.print(prompt + ": ");
             value = scanner.nextFloat();
-            if (value >= min && value <= max)
-                break;
-            System.out.println("Please enter a value between "+min+" and "+max);
+            if (value >= min && value <= max) break;
+            System.out.println("Please enter a value between " + min + " and " + max);
         }
         return value;
     }
