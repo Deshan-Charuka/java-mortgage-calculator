@@ -17,16 +17,24 @@ public class Main {
         int principal = (int) readNumber("Principal($1K - $1M)", 1000, 1_000_000);
         float annualInterest = (float) readNumber("Annual Interest Rate", 1, 30);
         byte years = (byte) readNumber("Period (Years)", 1, 30);
-        short monthsPaid = 1;
 
         //Calculation
+        printMortgage(principal, annualInterest, years);
+        //Payments Schedule
+        printPaymentSchedule(principal, annualInterest, years);
+
+    }
+
+    private static void printMortgage(int principal, float annualInterest, byte years) {
         double mortgage = calculateMortgage(principal, annualInterest, years);
         String formattedMortgage = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println("Mortgage");
         System.out.println("--------");
         System.out.println("Monthly payments: " + formattedMortgage);
+    }
 
-        //Payments Schedule
+    private static void printPaymentSchedule(int principal, float annualInterest, byte years) {
+        short monthsPaid = 1;
         System.out.println("Payment Schedule");
         System.out.println("----------------");
         while (monthsPaid <= years * MONTHS_IN_YEAR) {
@@ -35,7 +43,6 @@ public class Main {
             System.out.println(formattedBalance);
             ++monthsPaid;
         }
-
     }
 
     public static double calculateBalance(int principal, float annualInterest, byte years, short numberOfPaymentsMade) {
