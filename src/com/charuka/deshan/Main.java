@@ -53,7 +53,7 @@ public class Main {
         return loanBalance;
     }
 
-    public static double calculateMortgage(int principal, float annualInterest, byte years) {
+     public static double calculateMortgage(int principal, float annualInterest, byte years) {
         float monthlyInterest = (annualInterest / PERCENT) / MONTHS_IN_YEAR;
         short periodMonths = (short) (years * MONTHS_IN_YEAR);
 
