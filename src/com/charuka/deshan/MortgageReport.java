@@ -8,27 +8,29 @@ import java.text.NumberFormat;
  **/
 public class MortgageReport {
 
-    private static MortgageCalculator calculator;
+    private MortgageCalculator calculator;
 
-    public static void printMortgage(int principal, float annualInterest, byte years) {
-        calculator = new MortgageCalculator(principal, annualInterest, years);
+    public MortgageReport(MortgageCalculator calculator) {
+        this.calculator = calculator;
+    }
 
+    public void printPaymentSchedule() {
+        short monthsPaid = 1;
+        System.out.println("Payment Schedule");
+        System.out.println("----------------");
+        while (monthsPaid <= calculator.getYears() * Main.MONTHS_IN_YEAR) {
+            double loanBalance = calculator.calculateBalance(monthsPaid);
+            String formattedBalance = NumberFormat.getCurrencyInstance().format(loanBalance);
+            System.out.println(formattedBalance);
+            ++monthsPaid;
+        }
+    }
+
+    public void printMortgage() {
         double mortgage = calculator.calculateMortgage();
         String formattedMortgage = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println("Mortgage");
         System.out.println("--------");
         System.out.println("Monthly payments: " + formattedMortgage);
-    }
-
-    public static void printPaymentSchedule(int principal, float annualInterest, byte years) {
-        short monthsPaid = 1;
-        System.out.println("Payment Schedule");
-        System.out.println("----------------");
-        while (monthsPaid <= years * Main.MONTHS_IN_YEAR) {
-            double loanBalance = MortgageCalculator.calculateBalance(monthsPaid);
-            String formattedBalance = NumberFormat.getCurrencyInstance().format(loanBalance);
-            System.out.println(formattedBalance);
-            ++monthsPaid;
-        }
     }
 }
