@@ -5,7 +5,9 @@ package com.charuka.deshan;
  * @since : 2022-11-20
  **/
 public class MortgageCalculator {
-     private int principal;
+    public final static byte MONTHS_IN_YEAR = 12;
+    public final static byte PERCENT = 100;
+    private int principal;
      private float annualInterest;
      private byte years;
 
@@ -16,8 +18,8 @@ public class MortgageCalculator {
     }
 
     public double calculateBalance(short numberOfPaymentsMade) {
-        float monthlyInterest = (annualInterest / Main.PERCENT) / Main.MONTHS_IN_YEAR;
-        short periodMonths = (short) (years * Main.MONTHS_IN_YEAR);
+        float monthlyInterest = (annualInterest / PERCENT) / MONTHS_IN_YEAR;
+        short periodMonths = (short) (years * MONTHS_IN_YEAR);
 
         double loanBalance = (principal * (Math.pow(1 + monthlyInterest, periodMonths) - Math.pow(1 + monthlyInterest, numberOfPaymentsMade))) / ((Math.pow(1 + monthlyInterest, periodMonths)) - 1);
 
@@ -25,8 +27,8 @@ public class MortgageCalculator {
     }
 
     public double calculateMortgage() {
-        float monthlyInterest = (annualInterest / Main.PERCENT) / Main.MONTHS_IN_YEAR;
-        short periodMonths = (short) (years * Main.MONTHS_IN_YEAR);
+        float monthlyInterest = (annualInterest / PERCENT) / MONTHS_IN_YEAR;
+        short periodMonths = (short) (years * MONTHS_IN_YEAR);
 
         double mortgage = principal * (monthlyInterest * Math.pow((1 + monthlyInterest), periodMonths) / (Math.pow((1 + monthlyInterest), periodMonths) - 1));
 

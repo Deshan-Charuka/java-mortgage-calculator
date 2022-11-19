@@ -6,8 +6,6 @@ package com.charuka.deshan;
  * @since : 2022-10-15
  **/
 public class Main {
-    final static byte MONTHS_IN_YEAR = 12;
-    final static byte PERCENT = 100;
 
     public static void main(String[] args) {
 
