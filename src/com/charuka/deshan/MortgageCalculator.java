@@ -1,7 +1,5 @@
 package com.charuka.deshan;
 
-import java.text.NumberFormat;
-
 /**
  * @author : Deshan Charuka <d.c.0729439631@gmail.com>
  * @since : 2022-11-20
@@ -40,7 +38,7 @@ public class MortgageCalculator {
 
     public double[] getRemainingBalances(){
         short monthsPaid = 1;
-        var balances = new double[getPeriodMonths()]
+        var balances = new double[getPeriodMonths()];
         while (monthsPaid <= balances.length) {
             balances[monthsPaid-1] = calculateBalance(monthsPaid);
             ++monthsPaid;

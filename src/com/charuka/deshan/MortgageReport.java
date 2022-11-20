@@ -8,10 +8,12 @@ import java.text.NumberFormat;
  **/
 public class MortgageReport {
 
+    private final NumberFormat currency;
     private MortgageCalculator calculator;
 
     public MortgageReport(MortgageCalculator calculator) {
         this.calculator = calculator;
+        currency = NumberFormat.getCurrencyInstance();
     }
 
     public void printPaymentSchedule() {
@@ -19,13 +21,13 @@ public class MortgageReport {
         System.out.println("Payment Schedule");
         System.out.println("----------------");
         for (double loanBalance : calculator.getRemainingBalances()){
-            System.out.println(NumberFormat.getCurrencyInstance().format(loanBalance));
+            System.out.println(currency.format(loanBalance));
         }
     }
 
     public void printMortgage() {
         double mortgage = calculator.calculateMortgage();
-        String formattedMortgage = NumberFormat.getCurrencyInstance().format(mortgage);
+        String formattedMortgage = currency.format(mortgage);
         System.out.println("Mortgage");
         System.out.println("--------");
         System.out.println("Monthly payments: " + formattedMortgage);
