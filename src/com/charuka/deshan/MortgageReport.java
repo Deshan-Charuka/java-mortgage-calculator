@@ -18,11 +18,8 @@ public class MortgageReport {
         short monthsPaid = 1;
         System.out.println("Payment Schedule");
         System.out.println("----------------");
-        while (monthsPaid <= calculator.getYears() * MortgageCalculator.MONTHS_IN_YEAR) {
-            double loanBalance = calculator.calculateBalance(monthsPaid);
-            String formattedBalance = NumberFormat.getCurrencyInstance().format(loanBalance);
-            System.out.println(formattedBalance);
-            ++monthsPaid;
+        for (double loanBalance : calculator.getRemainingBalances()){
+            System.out.println(NumberFormat.getCurrencyInstance().format(loanBalance));
         }
     }
 
